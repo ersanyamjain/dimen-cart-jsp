@@ -1,0 +1,14 @@
+// 		String path=getServletContext().getRealPath("images");
+// 		String path="images";
+// 		MultipartRequest mpr=new MultipartRequest(request,path,500*1024*1024);
+// 		String path1=mpr.getOriginalFileName("pimage");
+// 		String path2=path+"/"+path1;
+// 		FileInputStream fin=new FileInputStream(path2);
+
+
+//sql="insert into products(name,image,description,specs,stock,price,delcharges,catid,visible) values('"+pname+"',?,'"+pdesc+"','"+specs+"',"+stock+","+price+","+delcharges+","+cid+","+visible+")";
+//PreparedStatement ps=c.prepareStatement(sql);
+			//ps.setBinaryStream(1, fin,fin.available());
+			//int status=ps.executeUpdate();
+
+enctype="multipart/form-data"			

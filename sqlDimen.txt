@@ -1,0 +1,302 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.1.33-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql> use dimendb;
+Database changed
+
+mysql> desc users;
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| id              | int(7)       | NO   | PRI | NULL    | auto_increment |
+| username        | varchar(20)  | NO   |     | NULL    |                |
+| name            | varchar(30)  | NO   |     | NULL    |                |
+| email           | varchar(30)  | NO   |     | NULL    |                |
+| hashed_password | varchar(60)  | NO   |     | NULL    |                |
+| phone           | varchar(11)  | NO   |     | NULL    |                |
+| address         | varchar(100) | NO   |     | NULL    |                |
+| sex             | varchar(6)   | NO   |     | NULL    |                |
+| dob             | varchar(20)  | NO   |     | NULL    |                |
+| subsc           | tinyint(1)   | NO   |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> create table productcat
+    -> (
+    -> id int(5) auto_increment primary key,
+    -> name varchar(40) not null,
+    -> description text,
+    -> visible tinyint(1) not null
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table products
+    -> (
+    -> id int(5) auto_increment primary key,
+    -> name varchar(40) not null,
+    -> description text,
+    -> specs text,
+    -> stock int(5) not null,
+    -> price int(7) not null,
+    -> delcharges int(4) not null,
+    -> catid int(5)not null,
+    -> image blob,
+    -> visible tinyint(1) not null
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc productcat;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(40) | NO   |     | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
+| visible     | tinyint(1)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(40) | NO   |     | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
+| specs       | text        | YES  |     | NULL    |                |
+| stock       | int(5)      | NO   |     | NULL    |                |
+| price       | int(7)      | NO   |     | NULL    |                |
+| delcharges  | int(4)      | NO   |     | NULL    |                |
+| catid       | int(5)      | NO   |     | NULL    |                |
+| image       | blob        | YES  |     | NULL    |                |
+| visible     | tinyint(1)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> insert into productcat(name,description,visible) values('Mobiles and Smartphones','All the mobiles and smartphones of all the brands till date will be available under this catagory',1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from productcat;
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+| id | name                    | description                                                                                       | visible |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+|  1 | Mobiles and Smartphones | All the mobiles and smartphones of all the brands till date will be available under this catagory |       1 |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into products(name,description,specs,stock,price,delcharges,catid,visible) values('Samsung Galaxy S6 Edge Plus','The latest flagship smartphone by SAMSUNG company','5.7 Inches FHD Screen,Android 5.1.1 Lollipop OS, 4GB RAM, 64GB Internal Storage,Metallic and Glass Design,Dual Side Edges
+',50,65000,500,1,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from products;
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+| id | name                        | description                                       | specs                                                                                                                     | stock | price | delcharges | catid | image | visible |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+|  1 | Samsung Galaxy S6 Edge Plus | The latest flagship smartphone by SAMSUNG company | 5.7 Inches FHD Screen,Android 5.1.1 Lollipop OS, 4GB RAM, 64GB Internal Storage,Metallic and Glass Design,Dual Side Edges |    50 | 65000 |        500 |     1 | NULL  |       1 |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql>create table orders
+(
+number int(5) primary key auto_increment,
+userid int(6)not null,
+amount int(7)not null,
+items int(3) not null
+);
+
+mysql> desc orders;
++--------+--------+------+-----+---------+----------------+
+| Field  | Type   | Null | Key | Default | Extra          |
++--------+--------+------+-----+---------+----------------+
+| number | int(5) | NO   | PRI | NULL    | auto_increment |
+| userid | int(6) | NO   |     | NULL    |                |
+| amount | int(7) | NO   |     | NULL    |                |
+| items  | int(3) | NO   |     | NULL    |                |
++--------+--------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from admins;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | sam      | sam      |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_dimendb |
++-------------------+
+| admins            |
+| orders            |
+| productcat        |
+| products          |
+| users             |
++-------------------+
+5 rows in set (0.11 sec)
+
+mysql> create table queries
+    -> (
+    -> name varchar(30) not null,
+    -> email varchar(30) not null,
+    -> phone varchar(11),
+    -> query text not null
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> alter table queries add id int(5) primary key auto_increment;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc queries;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| name  | varchar(30) | NO   |     | NULL    |                |
+| email | varchar(30) | NO   |     | NULL    |                |
+| phone | varchar(11) | YES  |     | NULL    |                |
+| query | text        | NO   |     | NULL    |                |
+| id    | int(5)      | NO   | PRI | NULL    | auto_increment |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from queries;
++-------------+-------------+-------------+----------------------+----+
+| name        | email       | phone       | query                | id |
++-------------+-------------+-------------+----------------------+----+
+| Sanyam Jain | sam@sam.com | 09989898989 | Enter the query here |  1 |
++-------------+-------------+-------------+----------------------+----+
+1 row in set (0.00 sec)
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1150
+Server version: 5.1.33-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql> use dimendb;
+Database changed
+mysql> desc admins;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(5)      | NO   | PRI | NULL    | auto_increment |
+| username | varchar(25) | YES  |     | NULL    |                |
+| password | varchar(25) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc productcat;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(40) | NO   |     | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
+| visible     | tinyint(1)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from prodctcat;
+ERROR 1146 (42S02): Table 'dimendb.prodctcat' doesn't exist
+mysql> select * from productcat;
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+| id | name                    | description                                                                                       | visible |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+|  1 | Mobiles and Smartphones | All the mobiles and smartphones of all the brands till date will be available under this catagory |       1 |
+|  2 | Laptops                 | All the Laptop Computers                                                                          |       1 |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(40) | NO   |     | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
+| specs       | text        | YES  |     | NULL    |                |
+| stock       | int(5)      | NO   |     | NULL    |                |
+| price       | int(7)      | NO   |     | NULL    |                |
+| delcharges  | int(4)      | NO   |     | NULL    |                |
+| catid       | int(5)      | NO   |     | NULL    |                |
+| image       | blob        | YES  |     | NULL    |                |
+| visible     | tinyint(1)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> alter table products modify name varchar(40) not null unique;
+Query OK, 1 row affected (0.02 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+| id | name                        | description                                       | specs                                                                                                                     | stock | price | delcharges | catid | image | visible |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+|  1 | Samsung Galaxy S6 Edge Plus | The latest flagship smartphone by SAMSUNG company | 5.7 Inches FHD Screen,Android 5.1.1 Lollipop OS, 4GB RAM, 64GB Internal Storage,Metallic and Glass Design,Dual Side Edges |    44 | 65000 |        500 |     1 | NULL  |       1 |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(40) | NO   | UNI | NULL    |                |
+| description | text        | YES  |     | NULL    |                |
+| specs       | text        | YES  |     | NULL    |                |
+| stock       | int(5)      | NO   |     | NULL    |                |
+| price       | int(7)      | NO   |     | NULL    |                |
+| delcharges  | int(4)      | NO   |     | NULL    |                |
+| catid       | int(5)      | NO   |     | NULL    |                |
+| image       | blob        | YES  |     | NULL    |                |
+| visible     | tinyint(1)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from productcat where id='1' limit 1;
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+| id | name                    | description                                                                                       | visible |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+|  1 | Mobiles and Smartphones | All the mobiles and smartphones of all the brands till date will be available under this catagory |       1 |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from productcat;
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+| id | name                    | description                                                                                       | visible |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+|  1 | Mobiles and Smartphones | All the mobiles and smartphones of all the brands till date will be available under this catagory |       1 |
+|  2 | Laptops                 | All the Laptop Computers                                                                          |       1 |
++----+-------------------------+---------------------------------------------------------------------------------------------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from products;
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+| id | name                        | description                                       | specs                                                                                                                     | stock | price | delcharges | catid | image | visible |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+|  1 | Samsung Galaxy S6 Edge Plus | The latest flagship smartphone by SAMSUNG company | 5.7 Inches FHD Screen,Android 5.1.1 Lollipop OS, 4GB RAM, 64GB Internal Storage,Metallic and Glass Design,Dual Side Edges |    44 | 65000 |        500 |     1 | NULL  |       1 |
++----+-----------------------------+---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+-------+------------+-------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> create table coupon
+    -> (
+    -> ccode varchar(15) primary key,
+    -> cvalue int(3) not null,
+    -> valid boolean not null
+    -> );
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> select * from coupon;
+Empty set (0.00 sec)
+
+mysql> insert into coupon values('DCJOIN5',5,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into coupon values('DCAPP10',10,1);
+Query OK, 1 row affected (0.00 sec)

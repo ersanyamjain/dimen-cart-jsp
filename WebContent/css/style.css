@@ -1,0 +1,236 @@
+body 
+{
+	margin: 0px;
+	padding: 0px;
+}
+.banner
+{
+	width:100%;
+	height:350px;
+}
+.banner img
+{
+	margin:auto;
+	display:block;
+	width:100%;
+	height:100%;
+}
+.main
+{
+	margin-left:10px;
+	margin-right:10px;
+	width:95%;
+}
+.content
+{
+	padding:20px;
+	width:65%;
+	text-align:justify;
+	float:left;
+	height:600px;
+}
+.sidebar
+{
+	margin-top:100px;
+	margin-bottom:100px;
+	border-left: 1px #000033 solid;
+	text-align:justify;
+	padding-left:20px;
+	padding-right:20px;
+	width:25%;
+	height:550px;
+	margin-left:20px;
+	float:left;
+	
+}
+.login, .register
+{
+	padding-left:30%;
+	
+}
+.loginerrors , .regerrors
+{
+	border:2px solid #093c5e;
+	padding:10px;
+}
+
+.login input
+{
+	font-size:16;
+	padding:10px;
+}
+.loginbtn
+{
+	/* background:#3D79C6; */
+	font-size:16;
+	padding:10px;
+	padding-left:20px;
+	padding-right:20px;
+	font-weight:bold;
+}
+.products
+{
+	margin-left:50px;
+	list-style:none;
+}
+.products li
+{
+ 	list-style:none;
+}
+.productimg
+{
+	margin-right:50px;
+	height:180px;
+	width:200px;
+	border: 1px #000033 solid;
+	float:left;
+	
+}
+.productimg img
+{
+	margin:auto;
+	display:block;
+	width:100%;
+	height:100%;
+	float:left;
+/* 	max-width:100%; */
+/* 	max-height:100%; */
+}
+
+.regsubbtn, .regcanbtn
+{
+	font-weight:bold;
+	font-size:20;
+	text-decoration:none;
+	padding:10px;
+	padding-left:20px;
+	padding-right:20px;
+	background:#1D62B6;
+	border-radius:5px;
+	color:#FFF;
+}
+.signup a, .editform a , .checkout
+{
+	font-weight:bold;
+	font-size:20;
+	text-decoration:none;
+	padding:10px;
+	padding-left:20px;
+	padding-right:20px;
+	background:#1D62B6;
+	border-radius:5px;
+	color:#FFF;
+}
+.signup a:hover
+{
+	
+	background:#3D79C6;
+}
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+ 
+/*----- Menu Outline -----*/
+.menu-wrap {
+    width:84%;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+    background:#3D79C6;
+/*      position:fixed;  */
+}
+ 
+.menu
+{
+    width:100%;
+    margin:0px;
+    margin-left:19%;
+    background:#3D79C6;
+     height:42px;
+   
+}
+ 
+.menu li {
+    margin:0px;
+    list-style:none;
+    font-family:'Ek Mukta';
+}
+ 
+.menu a {
+    transition:all linear 0.25s;
+    color:#fff;
+    text-decoration:none;
+}
+ 
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#fff;
+    /* font-weight:bold; */
+}
+ 
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+}
+ 
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:left;
+    display:inline-block;
+    position:relative;
+    font-size:19px;
+}
+ 
+.menu > ul > li > a {
+    padding:10px 40px;
+    display:inline-block;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+}
+ 
+.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+    background:#1D62B6;
+}
+ 
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+ 
+.sub-menu {
+    width:160%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#1D62B6;
+}
+ 
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+ 
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+    color:#fff;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#3D79C6;
+    font-weight:bold;
+}
+
+.footer
+{
+	padding-top:60px;
+	width:100%;
+	height:100px;
+	background:#1D62B6;
+	color:#FFF;
+	float:left;
+}
